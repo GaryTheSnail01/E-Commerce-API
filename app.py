@@ -1,22 +1,12 @@
-from flask import Flask, request, jsonify
-from flask_sqlalchemy import SQLAlchemy
-from flask_marshmallow import Marshmallow
+from flask import request, jsonify
 from marshmallow import ValidationError
 from sqlalchemy import select
-from models import Base, User, Order, Product, order_product
-from models import user_schema, order_schema, product_schema, users_schema, orders_schema, products_schema
-
-# Initialize Flask app
-app = Flask(__name__)
+from models import User, Order, Product
+from models import user_schema, order_schema, product_schema, users_schema, orders_schema, products_schema, app, db
 
 # MySQL database configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:WaTers01#@localhost/ec_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-# Initialize SQLAlchemy and Marshmallow extensions
-db = SQLAlchemy(model_class=Base)
-db.init_app(app)
-ma = Marshmallow(app)
 
 #-------API ENDPOINTS / ROUTES--------
 # User Endpoints

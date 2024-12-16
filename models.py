@@ -18,6 +18,11 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 class Base(DeclarativeBase):
     pass
 
+# Initialize SQLAlchemy and Marshmallow extensions
+db = SQLAlchemy(model_class=Base)
+db.init_app(app)
+ma = Marshmallow(app)
+
 # Order - Product Association Table
 order_product = Table(
     'order_product',
