@@ -176,7 +176,7 @@ def create_order():
 
     return jsonify({'message': 'Order created successfully', 'order_id': new_order.id}), 201
     
-@app.route('/orders/<int:order_id>/add_product/<int:product_id>', methods=['GET']) # Add product to an order
+@app.route('/orders/<int:order_id>/add_product/<int:product_id>', methods=['POST']) # Add product to an order
 def add_product(order_id, product_id):
     order = db.session.get(Order, order_id)
     product = db.session.get(Product, product_id)
