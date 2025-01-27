@@ -64,11 +64,6 @@ class Product(Base):
     # One to Many relationship between a product and their orders using the 'order_product' table
     orders: Mapped[List['Order']] = relationship(secondary='order_product', back_populates='products')
     
-# Initialize SQLAlchemy and Marshmallow extensions
-db = SQLAlchemy(model_class=Base)
-db.init_app(app)
-ma = Marshmallow(app)
-    
 class UserSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = User
